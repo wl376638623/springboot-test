@@ -74,20 +74,25 @@
 								<td th:text="${#dates.format(emp.birth,'yyyy-MM-dd')}"></td>
 								<td>
 									<a class="btn-sm btn-primary" th:href="@{/emp/}+${emp.id}">编辑</a>
-									<button class="btn-sm btn-danger">删除</button>
+
+									<button type="submit" th:attr="del_uri=@{/emp/}+${emp.id}" class="btn-sm btn-danger deleteBtn">删除</button>
+
 								</td>
 							</tr>
 							</tbody>
 						</table>
 					</div>
 				</main>
+				<form id="deleteEmpForm" method="post">
+					<input type="hidden" name="_method" value="delete">
+				</form>
 			</div>
 		</div>
 
 		<!-- Bootstrap core JavaScript
     ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
-		<script type="text/javascript" src="../../static/asserts/js/jquery-3.2.1.slim.min.js"></script>
+		<script type="text/javascript" src="../../static/asserts/js/jquery-3.2.1.slim.min.js" th:src="@{/asserts/js/jquery-3.2.1.slim.min.js}"></script>
 		<script type="text/javascript" src="../../static/asserts/js/popper.min.js"></script>
 		<script type="text/javascript" src="../../static/asserts/js/bootstrap.min.js"></script>
 
@@ -128,6 +133,13 @@
 				}
 			});
 		</script>
+	<script>
+		$(".deleteBtn").click(function () {
+
+			$("#deleteEmpForm").attr("action",$(this).attr("del_uri")).submit();
+			return false;
+		})
+	</script>
 
 	</body>
 

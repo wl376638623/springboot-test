@@ -57,6 +57,7 @@
 					创建一个input name="_method"
 					-->
 						<input type="hidden" name="_method" value="put" th:if="${emp!=null}">
+						<input type="hidden" name="id" th:if="${emp!=null}" th:value="${emp.id}">
 						<div class="form-group">
 							<label>LastName</label>
 							<input name="lastName" type="text" class="form-control" placeholder="zhangsan" th:value="${emp!=null}?${emp.lastName}">
