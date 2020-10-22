@@ -12,6 +12,8 @@ import wanglu.springboot.component.MyLocaleResolver;
 
 @Configuration
 public class MyMvcConfig implements WebMvcConfigurer {
+
+
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/hello").setViewName("success");
@@ -28,9 +30,9 @@ public class MyMvcConfig implements WebMvcConfigurer {
             //注册拦截器
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
-                //springboot已经做好静态资源映射
-                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-                        .excludePathPatterns("/index.html", "/", "/user/login");
+               //springboot已经做好静态资源映射
+//                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+//                        .excludePathPatterns("/index.html", "/", "/user/login");
             }
         };
         return webMvcConfigurer;
